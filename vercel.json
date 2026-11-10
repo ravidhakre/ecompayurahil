@@ -5,9 +5,15 @@
       "includeFiles": "lib/**,views/**,public/**,package.json",
       "maxDuration": 60,
       "memory": 1024
+    },
+    "api/diag.js": {
+      "includeFiles": "lib/**,views/**,public/**,package.json",
+      "maxDuration": 30,
+      "memory": 512
     }
   },
   "rewrites": [
+    { "source": "/diag", "destination": "/api/diag.js" },
     { "source": "/(.*)", "destination": "/api/index.js" }
   ]
 }
