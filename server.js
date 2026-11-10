@@ -706,16 +706,6 @@ async function handleApi(req, res, url) {
     return;
   }
 
-  // TEMPORARY PROBE (Vercel routing debug): echo the request URL and the
-  // platform routing headers so we can see what path Vercel delivers.
-  if (process.env.VERCEL) {
-    const safe = {};
-    for (const [k, v] of Object.entries(req.headers)) {
-      if (k === 'cookie' || k === 'authorization') continue;
-      safe[k] = v;
-    }
-    return sendJson(res, 404, { ok: false, error: 'API route not found.', probe: { url: req.url, headers: safe } });
-  }
   return sendJson(res, 404, { ok: false, error: 'API route not found.' });
 }
 
@@ -1179,6 +1169,16 @@ async function handleRequest(req, res) {
     url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   } catch {
     return sendText(res, 400, 'Bad request');
+  }
+
+  // Vercel rewrites can deliver the destination URL (e.g. /api/index) instead
+  // of the original path. When configured with ?__path=/<original> we restore it.
+  if (process.env.VERCEL && url.searchParams.has('__path')) {
+    const restored = url.searchParams.get('__path') || '/';
+    url.searchParams.delete('__path');
+    const qs = url.searchParams.toString();
+    req.url = restored + (qs ? `?${qs}` : '');
+    url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   }
 
   let pathname;
