@@ -1432,4 +1432,10 @@ if (require.main === module) {
   });
 }
 
-module.exports = { handleRequest };
+// Vercel's Node launcher requires the default export of the entry module to
+// be a request-handler function (or an http.Server). Local runs
+// (`node server.js`) still start a listening server via the require.main
+// guard above. The named property keeps `require('../server.js')` destructuring
+// in api/index.js working unchanged.
+module.exports = handleRequest;
+module.exports.handleRequest = handleRequest;
