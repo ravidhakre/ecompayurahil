@@ -1396,23 +1396,29 @@ async function handleRequest(req, res) {
   }
 }
 
-const server = http.createServer((req, res) => {
-  handleRequest(req, res).catch((error) => {
-    console.error('[server]', error);
-    if (!res.headersSent) sendText(res, 500, 'Internal server error');
-    else res.end();
+// When run directly (local dev / VPS) start a listening HTTP server.
+// When imported (Vercel serverless function) only export the handler.
+if (require.main === module) {
+  const server = http.createServer((req, res) => {
+    handleRequest(req, res).catch((error) => {
+      console.error('[server]', error);
+      if (!res.headersSent) sendText(res, 500, 'Internal server error');
+      else res.end();
+    });
   });
-});
 
-server.listen(PORT, HOST, () => {
-  const settings = getSettings();
-  console.log('');
-  console.log('  Art Guru is running');
-  console.log(`  Store:  http://localhost:${PORT}`);
-  console.log(`  Admin:  http://localhost:${PORT}/admin`);
-  console.log(`  Admin password: ${process.env.ADMIN_PASSWORD ? '(set via ADMIN_PASSWORD)' : 'ArtGuru@2026 (default — change it!)'}`);
-  console.log(`  PayU:   ${payu.isConfigured() ? `${payu.PAYU_MODE} mode` : 'demo mode (PAYU_KEY / PAYU_SALT not set)'}`);
-  console.log(`  Database: ${path.join('data', 'artguru.db')}`);
-  console.log('');
-  if (seeded) console.log('  Seeded 64 products, categories, coupons and store settings.');
-});
+  server.listen(PORT, HOST, () => {
+    const settings = getSettings();
+    console.log('');
+    console.log('  Art Guru is running');
+    console.log(`  Store:  http://localhost:${PORT}`);
+    console.log(`  Admin:  http://localhost:${PORT}/admin`);
+    console.log(`  Admin password: ${process.env.ADMIN_PASSWORD ? '(set via ADMIN_PASSWORD)' : 'ArtGuru@2026 (default — change it!)'}`);
+    console.log(`  PayU:   ${payu.isConfigured() ? `${payu.PAYU_MODE} mode` : 'demo mode (PAYU_KEY / PAYU_SALT not set)'}`);
+    console.log(`  Database: ${process.env.FIRESTORE_PROJECT_ID || process.env.FIREBASE_PROJECT_ID ? 'Firebase Firestore' : path.join('data', 'artguru.db')}`);
+    console.log('');
+    if (seeded) console.log('  Seeded products, categories, coupons and store settings.');
+  });
+}
+
+module.exports = { handleRequest };
