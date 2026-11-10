@@ -1178,6 +1178,16 @@ async function handleRequest(req, res) {
     return sendText(res, 400, 'Bad request');
   }
 
+  // Temporary diagnostics endpoint (helps debug serverless boot issues).
+  if (pathname === '/diag') {
+    const os = require('node:os');
+    const info = { node: process.version, vercel: Boolean(process.env.VERCEL), cwd: process.cwd() };
+    try { require('node:sqlite'); info.sqlite = 'ok'; } catch (e) { info.sqlite = 'ERR: ' + e.message; }
+    try { require('node:fs').writeFileSync(os.tmpdir() + '/ag-write-test', 'ok'); info.tmp = 'writable'; } catch (e) { info.tmp = 'ERR: ' + e.message; }
+    try { info.products = db.prepare('SELECT COUNT(*) AS c FROM products').get().c; info.db = 'ok'; } catch (e) { info.db = 'ERR: ' + e.message; }
+    return sendJson(res, 200, info);
+  }
+
   if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
 
   // static assets
