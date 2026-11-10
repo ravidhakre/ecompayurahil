@@ -1184,6 +1184,7 @@ async function handleRequest(req, res) {
     const info = { node: process.version, vercel: Boolean(process.env.VERCEL), cwd: process.cwd() };
     try { require('node:sqlite'); info.sqlite = 'ok'; } catch (e) { info.sqlite = 'ERR: ' + e.message; }
     try { require('node:fs').writeFileSync(os.tmpdir() + '/ag-write-test', 'ok'); info.tmp = 'writable'; } catch (e) { info.tmp = 'ERR: ' + e.message; }
+    if (require('./lib/db').dbInitError) info.dbInitError = String(require('./lib/db').dbInitError.message || require('./lib/db').dbInitError);
     try { info.products = db.prepare('SELECT COUNT(*) AS c FROM products').get().c; info.db = 'ok'; } catch (e) { info.db = 'ERR: ' + e.message; }
     return sendJson(res, 200, info);
   }
