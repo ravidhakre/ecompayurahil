@@ -18,7 +18,6 @@
     }
   },
   "rewrites": [
-    { "source": "/diag", "destination": "/api/diag.js" },
-    { "source": "/(.*)", "destination": "/api/index.js" }
+    { "source": "/(.*)", "destination": "/api/index" }
   ]
 }
