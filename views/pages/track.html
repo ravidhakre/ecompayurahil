@@ -1,0 +1,71 @@
+{{HEAD}}
+{{HEADER}}
+<main id="main-content">
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><span aria-current="page">Track order</span>
+      </nav>
+      <span class="eyebrow">Where is my parcel?</span>
+      <h1>Track your<br>order.</h1>
+      <p class="lead">Enter your order number and the phone number used at checkout. We will show you exactly where your books are.</p>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <div class="track-wrap">
+        <div class="track-card">
+          <form class="track-form" id="trackForm">
+            <div class="field">
+              <label for="trackOrder">Order number</label>
+              <input id="trackOrder" name="order" type="text" placeholder="AG2600012345" autocomplete="off" required>
+            </div>
+            <div class="field">
+              <label for="trackPhone">Phone number</label>
+              <input id="trackPhone" name="phone" type="tel" inputmode="numeric" maxlength="13" placeholder="10-digit mobile number" autocomplete="tel" required>
+            </div>
+            <button class="btn btn-ink" type="submit" id="trackBtn">Track order</button>
+          </form>
+          <p class="muted small" style="margin-top:14px">You can find your order number in the confirmation email. Need help? <a href="/contact" style="text-decoration:underline">Contact the studio</a>.</p>
+        </div>
+
+        <div class="alert alert-error" id="trackError" role="alert" hidden></div>
+
+        <div id="trackResult" hidden>
+          <div class="track-card">
+            <div class="track-result-head">
+              <div>
+                <h2 id="trackOrderNo">Order</h2>
+                <p id="trackPlaced"></p>
+              </div>
+              <span class="status-badge" id="trackStatus">Placed</span>
+            </div>
+
+            <div class="timeline" id="trackTimeline"></div>
+
+            <div class="track-items" id="trackItems"></div>
+
+            <div class="track-address" id="trackAddress"></div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+              <a class="btn btn-ink btn-sm" id="trackReceipt" href="#">View receipt</a>
+              <a class="btn btn-outline btn-sm" href="/shop">Shop more books</a>
+              <a class="btn btn-outline btn-sm" href="https://wa.me/{{WHATSAPP}}?text=Hi%20Art%20Guru%2C%20I%20need%20help%20with%20my%20order" target="_blank" rel="noopener">Ask on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="track-card" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+          <div>
+            <span class="eyebrow">Need a hand?</span>
+            <h3 style="font-size:22px;margin:5px 0 3px">We reply within one working day.</h3>
+            <p class="muted small">Call {{PHONE}} or email {{EMAIL}} · {{SUPPORT_HOURS}}</p>
+          </div>
+          <a class="btn btn-outline btn-sm" href="/contact">Contact support</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{{FOOTER}}

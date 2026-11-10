@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="96" viewBox="0 0 360 96" role="img" aria-label="Art Guru">
+  <defs>
+    <linearGradient id="ag-ink-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBF6EE"/>
+      <stop offset="1" stop-color="#F0E3CF"/>
+    </linearGradient>
+    <linearGradient id="ag-brush-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2C46D"/>
+      <stop offset="0.55" stop-color="#E58A54"/>
+      <stop offset="1" stop-color="#E0705B"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(8 14)">
+    <rect width="68" height="68" rx="20" fill="#FBF6EE" opacity="0.1" stroke="#FBF6EE" stroke-opacity="0.22"/>
+    <path d="M17 50 C22 39, 29 27, 35 17 C37 27, 40 37, 47 50" fill="none" stroke="url(#ag-ink-light)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M25 42 H41" stroke="url(#ag-ink-light)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M47 50 C52 43, 55 37, 56 30" fill="none" stroke="url(#ag-brush-light)" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="55" cy="53" r="4.5" fill="#F2C46D"/>
+    <circle cx="44" cy="58" r="3.5" fill="#E0705B"/>
+    <circle cx="35" cy="60" r="3" fill="#9AA88C"/>
+  </g>
+  <g transform="translate(90 29)">
+    <text x="0" y="26" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" letter-spacing="2.5" fill="#FBF6EE">ART GURU</text>
+    <circle cx="180" cy="18" r="3.5" fill="#E3A94F"/>
+    <text x="1" y="45" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="700" letter-spacing="4.1" fill="#D9C7A7">COLOUR • CREATE • CALM</text>
+  </g>
+</svg>

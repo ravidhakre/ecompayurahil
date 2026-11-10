@@ -1,0 +1,94 @@
+{{HEAD}}
+{{HEADER}}
+<main id="main-content">
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><span aria-current="page">Shipping Policy</span>
+      </nav>
+      <span class="eyebrow">From our studio to your table</span>
+      <h1>Shipping<br>policy.</h1>
+      <p class="lead">How we pack, dispatch and deliver your books — including charges, timelines and what happens if something goes wrong in transit.</p>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <div class="policy-layout">
+        <aside class="policy-nav" aria-label="Policies">
+          <h2>Policies</h2>
+          <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/shipping-policy" style="color:var(--accent)">Shipping Policy</a>
+          <a href="/refund-cancellation">Refund &amp; Cancellation</a>
+          <a href="/faq">FAQs</a>
+          <a href="/contact">Contact us</a>
+        </aside>
+
+        <div class="prose">
+          <p class="updated">Last updated: 9 November 2026</p>
+
+          <div class="callout"><strong>Short version:</strong> We dispatch within 24 working hours. Shipping is free above {{FREE_SHIPPING}}; below that it is {{SHIPPING_FEE}}. Metro deliveries usually arrive in 2–4 working days, other pin codes in 4–7.</div>
+
+          <h2 id="dispatch">1. Dispatch times</h2>
+          <p>Orders placed before 4:00 PM IST on a working day (Monday–Saturday, excluding public holidays) are usually packed and handed to our courier within 24 working hours. Orders placed after the cut-off, on Sundays or on public holidays are dispatched on the next working day.</p>
+          <p>During new collection launches, festive sales or unusual demand, dispatch may take up to 48 working hours. If there is a significant delay, we will email you with an update.</p>
+
+          <h2 id="charges">2. Shipping charges</h2>
+          <table>
+            <thead><tr><th>Order value</th><th>Shipping charge</th></tr></thead>
+            <tbody>
+              <tr><td>{{FREE_SHIPPING}} and above</td><td><strong>FREE</strong></td></tr>
+              <tr><td>Below {{FREE_SHIPPING}}</td><td>{{SHIPPING_FEE}} flat</td></tr>
+              <tr><td>Cash on Delivery</td><td>{{SHIPPING_FEE}} or free as above, plus a {{COD_FEE}} COD handling fee</td></tr>
+            </tbody>
+          </table>
+          <p>All charges are shown clearly in your cart and at checkout before you place the order. There are no hidden fees.</p>
+
+          <h2 id="timelines">3. Delivery timelines</h2>
+          <table>
+            <thead><tr><th>Location</th><th>Estimated delivery after dispatch</th></tr></thead>
+            <tbody>
+              <tr><td>Metro cities (Bengaluru, Mumbai, Delhi NCR, Hyderabad, Chennai, Pune, Kolkata)</td><td>2–4 working days</td></tr>
+              <tr><td>Other serviceable tier-2 and tier-3 cities</td><td>4–7 working days</td></tr>
+              <tr><td>Remote, hill and North-East pin codes</td><td>7–10 working days</td></tr>
+            </tbody>
+          </table>
+          <p>These are estimates provided by our courier partners, not guarantees. Weather, strikes, festival volumes and local restrictions can cause delays outside our control. We will share tracking details so you can follow the parcel.</p>
+
+          <h2 id="serviceable">4. Serviceable areas</h2>
+          <p>We currently ship to most serviceable pin codes within India. If your pin code is not serviceable, you will be informed at checkout or by email after ordering, and any amount paid will be refunded in full. We do not currently offer international shipping.</p>
+
+          <h2 id="cod">5. Cash on Delivery</h2>
+          <p>COD is available on selected pin codes. A {{COD_FEE}} handling fee applies and is shown at checkout. Please keep the exact amount ready; couriers may not carry change. If you refuse a COD parcel without a valid reason, we may disable COD on your future orders.</p>
+
+          <h2 id="tracking">6. Tracking your order</h2>
+          <p>Once your parcel is dispatched, we send a tracking link by email and SMS to the contact details you provided. You can also use the <a href="/track-order">Track Order</a> page with your order number and phone number to see the latest status.</p>
+          <p>If tracking has not updated for more than 72 hours, contact us at <a href="mailto:{{EMAIL}}">{{EMAIL}}</a> with your order number and we will follow up with the courier.</p>
+
+          <h2 id="packaging">7. Packaging</h2>
+          <p>Books are wrapped in a moisture-resistant sleeve and packed in a sturdy corrugated mailer to protect the corners. Gift orders include a plain note card and a colour swatch card. If you need discreet packaging or a handwritten message, add a note at checkout or email us immediately after ordering.</p>
+
+          <h2 id="damage">8. Damaged, lost or incorrect parcels</h2>
+          <ul>
+            <li><strong>Visible damage:</strong> if the outer packaging is damaged, please take photos before opening and, where possible, refuse the parcel. Contact us within 48 hours.</li>
+            <li><strong>Damaged book:</strong> email us within {{RETURNS_DAYS}} days of delivery with photos of the book and packaging. We will arrange a replacement or refund.</li>
+            <li><strong>Wrong item:</strong> contact us within {{RETURNS_DAYS}} days and we will arrange the correct book at no extra cost.</li>
+            <li><strong>Marked delivered but not received:</strong> check with neighbours and your building reception first. If it is still missing, contact us within 48 hours and we will raise an investigation with the courier.</li>
+            <li><strong>Lost in transit:</strong> if the courier confirms the parcel is lost, we will send a replacement or refund you in full.</li>
+          </ul>
+
+          <h2 id="rto">9. Undeliverable parcels (RTO)</h2>
+          <p>If a parcel is returned to us because the address was incomplete, the phone number was unreachable, delivery was refused or no one was available after repeated attempts, we will contact you to arrange re-dispatch. Re-dispatch may incur an additional shipping charge. If you prefer a refund, the original shipping and COD fees are non-refundable in this case.</p>
+
+          <h2 id="address">10. Address accuracy</h2>
+          <p>Please double-check your address, PIN code and phone number before placing an order. We can change the address only before dispatch. Once the parcel is with the courier, changes may not be possible.</p>
+
+          <h2 id="contact">11. Shipping support</h2>
+          <p>For any shipping question, email <a href="mailto:{{EMAIL}}">{{EMAIL}}</a> or call {{PHONE}} during {{SUPPORT_HOURS}}. Please include your order number so we can help faster.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{{FOOTER}}

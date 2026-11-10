@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Local database (auto-seeded on first run)
+data/*.db
+data/*.db-wal
+data/*.db-shm
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+"<rfl:parameter name="path">
+E:\Websites\ecompayurahil\.gitignore

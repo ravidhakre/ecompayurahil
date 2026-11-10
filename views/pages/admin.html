@@ -1,0 +1,651 @@
+{{HEAD}}
+<div class="admin-root" id="adminRoot">
+  <div class="admin-login" id="loginScreen">
+    <div class="login-visual">
+      <div class="login-brand">
+        <img src="/assets/logo-light.svg" alt="Art Guru" width="190" height="51">
+      </div>
+      <div class="login-visual-copy">
+        <span class="login-eyebrow">Studio control room</span>
+        <h1>Every book,<br>every order,<br><em>in one place.</em></h1>
+        <p>Manage the Art Guru catalogue, dispatch orders, track revenue and keep the studio running — without leaving your browser.</p>
+      </div>
+      <div class="login-orbit" aria-hidden="true">
+        <img src="/art/1/cover.svg" alt="" class="orbit-card orbit-1">
+        <img src="/art/17/cover.svg" alt="" class="orbit-card orbit-2">
+        <img src="/art/33/cover.svg" alt="" class="orbit-card orbit-3">
+      </div>
+      <div class="login-foot">
+        <span>Art Guru · Bengaluru, India</span>
+        <span>{{YEAR}} · Admin</span>
+      </div>
+    </div>
+
+    <div class="login-panel">
+      <div class="login-card">
+        <div class="login-mark">
+          <img src="/assets/logo-mark.svg" alt="Art Guru mark" width="58" height="58">
+        </div>
+        <span class="admin-eyebrow">Restricted access</span>
+        <h2>Welcome back.</h2>
+        <p class="login-sub">Sign in with the studio password to open the admin panel.</p>
+
+        <form id="loginForm" autocomplete="off">
+          <div class="admin-field">
+            <label for="adminPassword">Admin password</label>
+            <div class="password-wrap">
+              <input id="adminPassword" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+              <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="admin-alert admin-alert-error" id="loginError" role="alert" hidden></div>
+          <button class="admin-btn admin-btn-accent admin-btn-lg" type="submit" id="loginBtn">
+            <span>Sign in to studio</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+
+        <div class="login-hint">
+          <span aria-hidden="true">i</span>
+          <p>Default password is <strong>ArtGuru@2026</strong>. Set the <code>ADMIN_PASSWORD</code> environment variable before going live.</p>
+        </div>
+        <a class="login-back" href="/">← Back to the store</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-shell" id="adminApp" hidden>
+    <aside class="admin-sidebar" id="adminSidebar" aria-label="Admin navigation">
+      <div class="sidebar-brand">
+        <img src="/assets/logo-light.svg" alt="Art Guru" width="168" height="45">
+        <span>Admin</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="sidebar-label">Overview</span>
+        <a href="#dashboard" data-view-link="dashboard" class="active">
+          <span class="nav-ico">◆</span><span>Dashboard</span>
+        </a>
+        <a href="#orders" data-view-link="orders">
+          <span class="nav-ico">▤</span><span>Orders</span><span class="nav-badge" id="badgeOrders" hidden>0</span>
+        </a>
+        <a href="#products" data-view-link="products">
+          <span class="nav-ico">▥</span><span>Products</span>
+        </a>
+        <a href="#reports" data-view-link="reports">
+          <span class="nav-ico">◔</span><span>Reports</span>
+        </a>
+
+        <span class="sidebar-label">Studio</span>
+        <a href="#coupons" data-view-link="coupons">
+          <span class="nav-ico">✂</span><span>Coupons</span>
+        </a>
+        <a href="#messages" data-view-link="messages">
+          <span class="nav-ico">✉</span><span>Messages</span><span class="nav-badge accent" id="badgeMessages" hidden>0</span>
+        </a>
+        <a href="#subscribers" data-view-link="subscribers">
+          <span class="nav-ico">◎</span><span>Subscribers</span>
+        </a>
+        <a href="#settings" data-view-link="settings">
+          <span class="nav-ico">⚙</span><span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a href="/" target="_blank" rel="noopener" class="sidebar-store">
+          <span>View storefront</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <div class="sidebar-user">
+          <span class="user-avatar">AG</span>
+          <div>
+            <strong id="sidebarEmail">admin@artguru.in</strong>
+            <span>Studio administrator</span>
+          </div>
+          <button type="button" class="icon-button" id="logoutBtn" title="Sign out" aria-label="Sign out">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <button type="button" class="admin-menu-btn" id="menuToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="topbar-title">
+          <span class="admin-eyebrow" id="topbarEyebrow">Studio overview</span>
+          <h1 id="topbarTitle">Dashboard</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="topbar-date" id="topbarDate"></span>
+          <button type="button" class="admin-btn admin-btn-ghost admin-btn-sm" id="refreshBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+            <span>Refresh</span>
+          </button>
+          <a class="admin-btn admin-btn-dark admin-btn-sm" href="/" target="_blank" rel="noopener">View store</a>
+        </div>
+      </header>
+
+      <main class="admin-content" id="adminContent">
+        <!-- ================= DASHBOARD ================= -->
+        <section class="admin-view active" data-view="dashboard" id="viewDashboard">
+          <div class="stat-grid" id="statGrid"></div>
+
+          <div class="admin-grid-2">
+            <article class="admin-panel">
+              <div class="panel-head">
+                <div>
+                  <span class="admin-eyebrow">Last 14 days</span>
+                  <h2>Revenue rhythm</h2>
+                </div>
+                <span class="panel-tag" id="revenueTag">—</span>
+              </div>
+              <div class="mini-chart" id="revenueChart" aria-label="Revenue for the last 14 days"></div>
+              <div class="chart-legend"><span>Daily revenue</span><span id="chartTotal">—</span></div>
+            </article>
+
+            <article class="admin-panel">
+              <div class="panel-head">
+                <div>
+                  <span class="admin-eyebrow">Shelf watch</span>
+                  <h2>Low stock</h2>
+                </div>
+                <a class="panel-link" href="#products">Manage →</a>
+              </div>
+              <div class="low-stock-list" id="lowStockList"></div>
+            </article>
+          </div>
+
+          <div class="admin-grid-2">
+            <article class="admin-panel">
+              <div class="panel-head">
+                <div>
+                  <span class="admin-eyebrow">Latest activity</span>
+                  <h2>Recent orders</h2>
+                </div>
+                <a class="panel-link" href="#orders">All orders →</a>
+              </div>
+              <div class="admin-table-wrap">
+                <table class="admin-table compact">
+                  <thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead>
+                  <tbody id="recentOrders"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="admin-panel">
+              <div class="panel-head">
+                <div>
+                  <span class="admin-eyebrow">Best loved</span>
+                  <h2>Top products</h2>
+                </div>
+              </div>
+              <div class="top-products" id="topProducts"></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= ORDERS ================= -->
+        <section class="admin-view" data-view="orders" id="viewOrders">
+          <div class="view-head">
+            <div>
+              <h2>Orders</h2>
+              <p>Every purchase, payment status and dispatch step in one queue.</p>
+            </div>
+          </div>
+
+          <div class="admin-panel filter-panel">
+            <form class="admin-filters" id="orderFilters">
+              <div class="admin-field">
+                <label for="orderSearch">Search</label>
+                <input id="orderSearch" name="q" type="search" placeholder="Order no, name, phone, email">
+              </div>
+              <div class="admin-field">
+                <label for="orderStatus">Status</label>
+                <select id="orderStatus" name="status">
+                  <option value="">All statuses</option>
+                  <option value="placed">Placed</option>
+                  <option value="confirmed">Confirmed</option>
+                  <option value="packed">Packed</option>
+                  <option value="shipped">Shipped</option>
+                  <option value="delivered">Delivered</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+              <div class="admin-field">
+                <label for="orderPayment">Payment</label>
+                <select id="orderPayment" name="payment">
+                  <option value="">All payments</option>
+                  <option value="pending">Pending</option>
+                  <option value="paid">Paid</option>
+                  <option value="failed">Failed</option>
+                  <option value="refunded">Refunded</option>
+                </select>
+              </div>
+              <div class="admin-field">
+                <label for="orderFrom">From</label>
+                <input id="orderFrom" name="from" type="date">
+              </div>
+              <div class="admin-field">
+                <label for="orderTo">To</label>
+                <input id="orderTo" name="to" type="date">
+              </div>
+              <div class="filter-actions">
+                <button class="admin-btn admin-btn-dark" type="submit">Apply</button>
+                <button class="admin-btn admin-btn-ghost" type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="admin-panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title-sm">Order queue</h2>
+                <p class="panel-sub" id="orderCount">Loading…</p>
+              </div>
+              <span class="panel-tag" id="orderQueueTag">—</span>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr><th>Order</th><th>Customer</th><th>Placed</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody id="ordersBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PRODUCTS ================= -->
+        <section class="admin-view" data-view="products" id="viewProducts">
+          <div class="view-head">
+            <div>
+              <h2>Library</h2>
+              <p>Add, edit and retire colouring books. Covers and inside pages generate automatically.</p>
+            </div>
+            <button type="button" class="admin-btn admin-btn-accent" id="addProductBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              New product
+            </button>
+          </div>
+
+          <div class="admin-panel filter-panel">
+            <form class="admin-filters product-filters" id="productFilters">
+              <div class="admin-field grow">
+                <label for="productSearch">Search products</label>
+                <input id="productSearch" name="q" type="search" placeholder="Title, category or slug">
+              </div>
+              <div class="admin-field">
+                <label for="productStatus">Availability</label>
+                <select id="productStatus" name="status">
+                  <option value="all">All products</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Hidden</option>
+                  <option value="low">Low stock (≤ 10)</option>
+                </select>
+              </div>
+              <div class="filter-actions">
+                <button class="admin-btn admin-btn-dark" type="submit">Filter</button>
+                <button class="admin-btn admin-btn-ghost" type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="admin-panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title-sm">All titles</h2>
+                <p class="panel-sub" id="productCount">Loading…</p>
+              </div>
+              <span class="panel-tag" id="productTag">—</span>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table products-table">
+                <thead>
+                  <tr><th>Book</th><th>Category</th><th>Price</th><th>Stock</th><th>Rating</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody id="productsBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= REPORTS ================= -->
+        <section class="admin-view" data-view="reports" id="viewReports">
+          <div class="view-head">
+            <div>
+              <h2>Reports</h2>
+              <p>Sales, product and category performance for any date range.</p>
+            </div>
+            <a class="admin-btn admin-btn-ghost" id="downloadCsvBtn" href="#" download>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+              Download CSV
+            </a>
+          </div>
+
+          <div class="admin-panel filter-panel">
+            <form class="admin-filters" id="reportFilters">
+              <div class="admin-field">
+                <label for="reportFrom">From</label>
+                <input id="reportFrom" name="from" type="date">
+              </div>
+              <div class="admin-field">
+                <label for="reportTo">To</label>
+                <input id="reportTo" name="to" type="date">
+              </div>
+              <div class="filter-actions">
+                <button class="admin-btn admin-btn-dark" type="submit">Run report</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="stat-grid reports-stats" id="reportStats"></div>
+
+          <div class="admin-grid-2">
+            <article class="admin-panel">
+              <div class="panel-head">
+                <div>
+                  <span class="admin-eyebrow">Daily performance</span>
+                  <h2>Sales by day</h2>
+                </div>
+              </div>
+              <div class="report-bars" id="reportBars"></div>
+              <div class="report-bar-axis" id="reportAxis"></div>
+            </article>
+            <article class="admin-panel">
+              <div class="panel-head">
+                <div>
+                  <span class="admin-eyebrow">Order health</span>
+                  <h2>Status &amp; payments</h2>
+                </div>
+              </div>
+              <div class="donut-list" id="reportStatus"></div>
+              <div class="donut-list payment-list" id="reportPayments"></div>
+            </article>
+          </div>
+
+          <div class="admin-grid-2">
+            <article class="admin-panel">
+              <div class="panel-head">
+                <div>
+                  <span class="admin-eyebrow">Bestsellers</span>
+                  <h2>Top products</h2>
+                </div>
+              </div>
+              <div class="admin-table-wrap">
+                <table class="admin-table compact">
+                  <thead><tr><th>Title</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
+                  <tbody id="reportProducts"></tbody>
+                </table>
+              </div>
+            </article>
+            <article class="admin-panel">
+              <div class="panel-head">
+                <div>
+                  <span class="admin-eyebrow">Mix</span>
+                  <h2>Category sales</h2>
+                </div>
+              </div>
+              <div class="admin-table-wrap">
+                <table class="admin-table compact">
+                  <thead><tr><th>Category</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
+                  <tbody id="reportCategories"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= COUPONS ================= -->
+        <section class="admin-view" data-view="coupons" id="viewCoupons">
+          <div class="view-head">
+            <div>
+              <h2>Coupons</h2>
+              <p>Create percentage or flat discount codes with minimum order rules.</p>
+            </div>
+            <button type="button" class="admin-btn admin-btn-accent" id="addCouponBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              New coupon
+            </button>
+          </div>
+
+          <div class="admin-panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title-sm">Active codes</h2>
+                <p class="panel-sub">Codes are validated live at cart and checkout.</p>
+              </div>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead><tr><th>Code</th><th>Type</th><th>Value</th><th>Min order</th><th>Max discount</th><th>Status</th><th></th></tr></thead>
+                <tbody id="couponsBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= MESSAGES ================= -->
+        <section class="admin-view" data-view="messages" id="viewMessages">
+          <div class="view-head">
+            <div>
+              <h2>Messages</h2>
+              <p>Enquiries from the contact form, newest first.</p>
+            </div>
+            <span class="panel-tag" id="messageTag">—</span>
+          </div>
+          <div class="message-grid" id="messagesList"></div>
+        </section>
+
+        <!-- ================= SUBSCRIBERS ================= -->
+        <section class="admin-view" data-view="subscribers" id="viewSubscribers">
+          <div class="view-head">
+            <div>
+              <h2>Subscribers</h2>
+              <p>People who joined the studio newsletter.</p>
+            </div>
+            <button type="button" class="admin-btn admin-btn-ghost" id="exportSubscribersBtn">Export CSV</button>
+          </div>
+          <div class="admin-panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title-sm">Newsletter list</h2>
+                <p class="panel-sub" id="subscriberCount">Loading…</p>
+              </div>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table compact">
+                <thead><tr><th>Email</th><th>Source</th><th>Joined</th><th>Status</th></tr></thead>
+                <tbody id="subscribersBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SETTINGS ================= -->
+        <section class="admin-view" data-view="settings" id="viewSettings">
+          <div class="view-head">
+            <div>
+              <h2>Settings</h2>
+              <p>Store identity, support details, shipping rules and invoice preferences.</p>
+            </div>
+            <button type="submit" class="admin-btn admin-btn-accent" form="settingsForm">Save changes</button>
+          </div>
+
+          <form id="settingsForm" class="settings-form">
+            <div class="admin-panel">
+              <div class="panel-head">
+                <div><span class="admin-eyebrow">Identity</span><h2>Store details</h2></div>
+              </div>
+              <div class="admin-form-grid">
+                <div class="admin-field"><label for="setStoreName">Store name</label><input id="setStoreName" name="store_name" type="text"></div>
+                <div class="admin-field"><label for="setTagline">Tagline</label><input id="setTagline" name="tagline" type="text"></div>
+                <div class="admin-field full"><label for="setAnnouncement">Announcement bar</label><input id="setAnnouncement" name="announcement" type="text"></div>
+                <div class="admin-field full"><label for="setAboutShort">Short about text</label><textarea id="setAboutShort" name="about_short" rows="3"></textarea></div>
+                <div class="admin-field"><label for="setGstin">GSTIN / tax note</label><input id="setGstin" name="gstin" type="text"></div>
+                <div class="admin-field"><label for="setOrderPrefix">Order prefix</label><input id="setOrderPrefix" name="order_prefix" type="text" maxlength="4"></div>
+              </div>
+            </div>
+
+            <div class="admin-panel">
+              <div class="panel-head">
+                <div><span class="admin-eyebrow">Contact</span><h2>Support &amp; studio</h2></div>
+              </div>
+              <div class="admin-form-grid">
+                <div class="admin-field"><label for="setPhone">Phone</label><input id="setPhone" name="phone" type="text"></div>
+                <div class="admin-field"><label for="setEmail">Email</label><input id="setEmail" name="email" type="email"></div>
+                <div class="admin-field"><label for="setWhatsapp">WhatsApp number</label><input id="setWhatsapp" name="whatsapp" type="text"></div>
+                <div class="admin-field"><label for="setHours">Support hours</label><input id="setHours" name="support_hours" type="text"></div>
+                <div class="admin-field full"><label for="setAddress">Address</label><input id="setAddress" name="address" type="text"></div>
+                <div class="admin-field"><label for="setCity">City</label><input id="setCity" name="city" type="text"></div>
+                <div class="admin-field"><label for="setState">State</label><input id="setState" name="state" type="text"></div>
+                <div class="admin-field"><label for="setPincode">PIN code</label><input id="setPincode" name="pincode" type="text"></div>
+                <div class="admin-field"><label for="setCountry">Country</label><input id="setCountry" name="country" type="text"></div>
+                <div class="admin-field full"><label for="setMapEmbed">Google Maps embed URL</label><input id="setMapEmbed" name="map_embed" type="url" placeholder="https://www.google.com/maps/embed?pb=…"><span class="admin-hint">Paste only the embed URL from Google Maps → Share → Embed a map.</span></div>
+                <div class="admin-field"><label for="setInstagram">Instagram URL</label><input id="setInstagram" name="instagram" type="url"></div>
+                <div class="admin-field"><label for="setFacebook">Facebook URL</label><input id="setFacebook" name="facebook" type="url"></div>
+                <div class="admin-field"><label for="setYoutube">YouTube URL</label><input id="setYoutube" name="youtube" type="url"></div>
+              </div>
+            </div>
+
+            <div class="admin-panel">
+              <div class="panel-head">
+                <div><span class="admin-eyebrow">Commerce</span><h2>Fees &amp; policies</h2></div>
+              </div>
+              <div class="admin-form-grid">
+                <div class="admin-field"><label for="setShippingFee">Shipping fee (₹)</label><input id="setShippingFee" name="shipping_fee" type="number" min="0" step="1"></div>
+                <div class="admin-field"><label for="setFreeShipping">Free shipping above (₹)</label><input id="setFreeShipping" name="free_shipping_threshold" type="number" min="0" step="1"></div>
+                <div class="admin-field"><label for="setCodFee">COD handling fee (₹)</label><input id="setCodFee" name="cod_fee" type="number" min="0" step="1"></div>
+                <div class="admin-field"><label for="setReturnsDays">Return window (days)</label><input id="setReturnsDays" name="returns_days" type="number" min="0" step="1"></div>
+              </div>
+            </div>
+
+            <div class="settings-save-bar">
+              <span id="settingsSavedAt">Changes apply to the live storefront immediately.</span>
+              <button type="submit" class="admin-btn admin-btn-accent">Save changes</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- product modal -->
+  <div class="admin-modal" id="productModal" hidden>
+    <div class="modal-backdrop" data-close-modal="productModal"></div>
+    <div class="modal-card modal-wide" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+      <div class="modal-head">
+        <div>
+          <span class="admin-eyebrow" id="productModalKicker">New title</span>
+          <h2 id="productModalTitle">Add product</h2>
+        </div>
+        <button type="button" class="icon-button" data-close-modal="productModal" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <form id="productForm" class="modal-body">
+        <input type="hidden" name="id" id="productId">
+        <div class="admin-form-grid">
+          <div class="admin-field full"><label for="pTitle">Title</label><input id="pTitle" name="title" type="text" required></div>
+          <div class="admin-field"><label for="pSlug">Slug</label><input id="pSlug" name="slug" type="text" placeholder="auto-generated if empty"></div>
+          <div class="admin-field"><label for="pCategory">Category</label><select id="pCategory" name="category" required></select></div>
+          <div class="admin-field"><label for="pTheme">Art theme</label><input id="pTheme" name="theme" type="text" placeholder="mandala, floral, animals…"></div>
+          <div class="admin-field"><label for="pPalette">Colour palette</label>
+            <select id="pPalette" name="palette">
+              <option value="sunset">Sunset</option>
+              <option value="forest">Forest</option>
+              <option value="ocean">Ocean</option>
+              <option value="berry">Berry</option>
+              <option value="saffron">Saffron</option>
+              <option value="lavender">Lavender</option>
+              <option value="terracotta">Terracotta</option>
+              <option value="ink">Ink</option>
+            </select>
+          </div>
+          <div class="admin-field"><label for="pVariant">Art variant</label><input id="pVariant" name="art_variant" type="number" min="0" max="5" step="1" value="0"></div>
+          <div class="admin-field"><label for="pMrp">MRP (₹)</label><input id="pMrp" name="mrp" type="number" min="1" step="1" required></div>
+          <div class="admin-field"><label for="pPrice">Selling price (₹)</label><input id="pPrice" name="price" type="number" min="1" step="1" required></div>
+          <div class="admin-field"><label for="pStock">Stock</label><input id="pStock" name="stock" type="number" min="0" step="1" value="0"></div>
+          <div class="admin-field"><label for="pPages">Pages</label><input id="pPages" name="pages" type="number" min="1" step="1" value="25"></div>
+          <div class="admin-field"><label for="pAge">Age group</label><input id="pAge" name="age_group" type="text" placeholder="8+ years"></div>
+          <div class="admin-field"><label for="pBadge">Badge</label><input id="pBadge" name="badge" type="text" maxlength="30" placeholder="Bestseller"></div>
+          <div class="admin-field"><label for="pRating">Rating (1–5)</label><input id="pRating" name="rating" type="number" min="1" max="5" step="0.1" value="4.8"></div>
+          <div class="admin-field"><label for="pReviews">Review count</label><input id="pReviews" name="reviews" type="number" min="0" step="1" value="0"></div>
+          <div class="admin-field full"><label for="pImage">Custom cover image URL (optional)</label><input id="pImage" name="image_url" type="text" placeholder="/art/12/cover.svg"><span class="admin-hint">Leave blank to use the generated Art Guru cover.</span></div>
+          <div class="admin-field full"><label for="pDescription">Description</label><textarea id="pDescription" name="description" rows="4"></textarea></div>
+        </div>
+        <div class="toggle-row">
+          <label class="switch"><input type="checkbox" name="featured" id="pFeatured"><span></span> Featured on home</label>
+          <label class="switch"><input type="checkbox" name="bestseller" id="pBestseller"><span></span> Bestseller</label>
+          <label class="switch"><input type="checkbox" name="active" id="pActive" checked><span></span> Visible in store</label>
+        </div>
+        <div class="admin-alert admin-alert-error" id="productError" hidden></div>
+        <div class="modal-actions">
+          <button type="button" class="admin-btn admin-btn-ghost" data-close-modal="productModal">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-accent" id="productSaveBtn">Save product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- coupon modal -->
+  <div class="admin-modal" id="couponModal" hidden>
+    <div class="modal-backdrop" data-close-modal="couponModal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="couponModalTitle">
+      <div class="modal-head">
+        <div>
+          <span class="admin-eyebrow">Discount code</span>
+          <h2 id="couponModalTitle">New coupon</h2>
+        </div>
+        <button type="button" class="icon-button" data-close-modal="couponModal" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <form id="couponForm" class="modal-body">
+        <input type="hidden" name="id" id="couponId">
+        <div class="admin-form-grid">
+          <div class="admin-field"><label for="cCode">Code</label><input id="cCode" name="code" type="text" maxlength="24" required placeholder="ART10"></div>
+          <div class="admin-field"><label for="cType">Type</label>
+            <select id="cType" name="type"><option value="percent">Percentage</option><option value="fixed">Flat amount (₹)</option></select>
+          </div>
+          <div class="admin-field"><label for="cValue">Value</label><input id="cValue" name="value" type="number" min="1" step="1" required></div>
+          <div class="admin-field"><label for="cMin">Minimum order (₹)</label><input id="cMin" name="min_order" type="number" min="0" step="1" value="0"></div>
+          <div class="admin-field"><label for="cMax">Maximum discount (₹)</label><input id="cMax" name="max_discount" type="number" min="0" step="1" value="0"><span class="admin-hint">0 = no cap. Used for percentage codes.</span></div>
+          <div class="admin-field switch-field">
+            <label class="switch"><input type="checkbox" name="active" id="cActive" checked><span></span> Active</label>
+          </div>
+        </div>
+        <div class="admin-alert admin-alert-error" id="couponError" hidden></div>
+        <div class="modal-actions">
+          <button type="button" class="admin-btn admin-btn-ghost" data-close-modal="couponModal">Cancel</button>
+          <button type="submit" class="admin-btn admin-btn-accent" id="couponSaveBtn">Save coupon</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- order modal -->
+  <div class="admin-modal" id="orderModal" hidden>
+    <div class="modal-backdrop" data-close-modal="orderModal"></div>
+    <div class="modal-card modal-wide" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+      <div class="modal-head">
+        <div>
+          <span class="admin-eyebrow" id="orderModalKicker">Order details</span>
+          <h2 id="orderModalTitle">Order</h2>
+        </div>
+        <button type="button" class="icon-button" data-close-modal="orderModal" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="orderDetail"></div>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast" role="status" hidden></div>
+</div>

@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  artguru:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - PAYU_KEY=${PAYU_KEY}
+      - PAYU_SALT=${PAYU_SALT}
+      - APP_URL=${APP_URL:-http://localhost:3000}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

@@ -1,0 +1,121 @@
+{{HEAD}}
+{{HEADER}}
+<main id="main-content">
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><span aria-current="page">Shop</span>
+      </nav>
+      <div class="page-head-row">
+        <div>
+          <span class="eyebrow">The library</span>
+          <h1>Find your next<br>creative escape.</h1>
+          <p class="lead">Filter by mood, price or age. Every book is printed on thick 100 GSM paper with original, single-sided line art.</p>
+        </div>
+        <div class="page-head-stat"><strong data-total-books>64</strong>books in the library</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <div class="shop-layout">
+        <aside class="shop-sidebar" id="shopSidebar" aria-label="Product filters">
+          <div class="filter-head">
+            <h2>Filters</h2>
+            <div style="display:flex;gap:12px;align-items:center">
+              <button class="filter-clear" type="button" id="clearFilters">Clear all</button>
+              <button class="icon-btn filter-close" type="button" id="filterClose" aria-label="Close filters" style="display:none;width:30px;height:30px;font-size:22px">×</button>
+            </div>
+          </div>
+          <form id="filterForm">
+            <div class="filter-group">
+              <h3>Collection</h3>
+              <div class="filter-list" id="categoryFilter">
+                <label><input type="radio" name="category" value="" checked> All collections <span class="count">64</span></label>
+              </div>
+            </div>
+            <div class="filter-group">
+              <h3>Price</h3>
+              <div class="price-inputs">
+                <label class="sr-only" for="minPrice">Minimum price</label>
+                <input id="minPrice" name="min" type="number" inputmode="numeric" min="0" placeholder="₹ Min">
+                <span>to</span>
+                <label class="sr-only" for="maxPrice">Maximum price</label>
+                <input id="maxPrice" name="max" type="number" inputmode="numeric" min="0" placeholder="₹ Max">
+              </div>
+              <button class="filter-apply" type="submit">Apply price</button>
+            </div>
+            <div class="filter-group">
+              <h3>Rating</h3>
+              <div class="filter-list">
+                <label><input type="radio" name="rating" value="" checked> Any rating</label>
+                <label><input type="radio" name="rating" value="4.8"> 4.8 ★ &amp; above</label>
+                <label><input type="radio" name="rating" value="4.5"> 4.5 ★ &amp; above</label>
+                <label><input type="radio" name="rating" value="4"> 4.0 ★ &amp; above</label>
+              </div>
+            </div>
+            <div class="filter-group">
+              <h3>Availability</h3>
+              <div class="filter-list">
+                <label><input type="checkbox" name="in_stock" value="1"> In stock only</label>
+                <label><input type="checkbox" name="bestseller" value="1"> Bestsellers only</label>
+              </div>
+            </div>
+          </form>
+        </aside>
+
+        <div>
+          <div class="shop-toolbar">
+            <div class="shop-search">
+              <label class="sr-only" for="shopSearch">Search colouring books</label>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input id="shopSearch" type="search" placeholder="Search by title, theme or collection…" autocomplete="off">
+            </div>
+            <button class="btn btn-outline btn-sm mobile-filter-btn" type="button" id="mobileFilterBtn">Filters</button>
+            <label class="sr-only" for="sortSelect">Sort products</label>
+            <select class="sort-select" id="sortSelect">
+              <option value="curated">Curated for you</option>
+              <option value="popular">Most popular</option>
+              <option value="newest">Newest first</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+              <option value="rating">Highest rated</option>
+              <option value="discount">Biggest savings</option>
+              <option value="name">A–Z</option>
+            </select>
+          </div>
+
+          <div class="active-chips" id="activeChips"></div>
+          <div class="results-meta">
+            <span id="resultsCount">Loading the library…</span>
+            <span class="muted small">Free shipping above {{FREE_SHIPPING}}</span>
+          </div>
+
+          <div class="product-grid" id="shopGrid">
+            <div class="skeleton-card"><div class="skeleton-media shimmer"></div><div class="skeleton-line shimmer"></div><div class="skeleton-line short shimmer"></div></div>
+            <div class="skeleton-card"><div class="skeleton-media shimmer"></div><div class="skeleton-line shimmer"></div><div class="skeleton-line short shimmer"></div></div>
+            <div class="skeleton-card"><div class="skeleton-media shimmer"></div><div class="skeleton-line shimmer"></div><div class="skeleton-line short shimmer"></div></div>
+            <div class="skeleton-card"><div class="skeleton-media shimmer"></div><div class="skeleton-line shimmer"></div><div class="skeleton-line short shimmer"></div></div>
+          </div>
+
+          <div class="pagination" id="pagination" aria-label="Pagination"></div>
+
+          <div class="shop-help-card" style="margin-top:52px">
+            <div>
+              <span class="eyebrow">Can't decide?</span>
+              <h3>Tell us the mood. We'll match the book.</h3>
+              <p class="muted small">Message our studio on WhatsApp or email us — a real human will reply with three perfect picks.</p>
+            </div>
+            <div class="shop-help-actions">
+              <a class="btn btn-ink btn-sm" href="https://wa.me/{{WHATSAPP}}?text=Hi%20Art%20Guru%2C%20help%20me%20choose%20a%20colouring%20book" target="_blank" rel="noopener">Ask on WhatsApp</a>
+              <a class="btn btn-outline btn-sm" href="mailto:{{EMAIL}}">Email the studio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="filter-backdrop" id="filterBackdrop"></div>
+{{FOOTER}}

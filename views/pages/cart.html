@@ -1,0 +1,85 @@
+{{HEAD}}
+{{HEADER}}
+<main id="main-content">
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><span aria-current="page">Cart</span>
+      </nav>
+      <span class="eyebrow">Almost yours</span>
+      <h1>Your cart.</h1>
+      <p class="lead">A few lovely pages are waiting. Review your books, apply a coupon and head to checkout.</p>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <div class="cart-layout" id="cartLayout">
+        <div>
+          <div class="cart-panel">
+            <div class="cart-panel-head">
+              <h2>Your books <span id="cartItemCount" class="muted small"></span></h2>
+              <a href="/shop" class="text-link" style="font-size:11px">Continue shopping →</a>
+            </div>
+            <div id="cartItems">
+              <div class="cart-line" aria-hidden="true">
+                <div class="cart-thumb skeleton-media shimmer"></div>
+                <div><div class="skeleton-line shimmer"></div><div class="skeleton-line short shimmer"></div></div>
+              </div>
+            </div>
+            <div class="cart-continue">
+              <a href="/shop" class="text-link" style="font-size:11px">← Add more books</a>
+            </div>
+          </div>
+
+          <div class="cart-reassurance">
+            <div class="cr-item"><span aria-hidden="true">🚚</span><div><strong>Free shipping above {{FREE_SHIPPING}}</strong><span>Dispatched within 24 hours</span></div></div>
+            <div class="cr-item"><span aria-hidden="true">↩</span><div><strong>{{RETURNS_DAYS}}-day returns</strong><span>Easy replacement or refund</span></div></div>
+            <div class="cr-item"><span aria-hidden="true">🔒</span><div><strong>Secure checkout</strong><span>PayU encrypted payments</span></div></div>
+          </div>
+        </div>
+
+        <aside class="summary-card" id="cartSummary" aria-label="Order summary">
+          <h2>Order summary</h2>
+          <div id="summaryRows">
+            <div class="summary-row"><span>Subtotal</span><span>—</span></div>
+            <div class="summary-row"><span>Shipping</span><span>—</span></div>
+            <div class="summary-divider"></div>
+            <div class="summary-total"><span>Total</span><strong>—</strong></div>
+          </div>
+
+          <div class="free-ship-meter" id="freeShipMeter" hidden>
+            <p id="freeShipText"></p>
+            <div class="fsm-track"><span id="freeShipBar"></span></div>
+          </div>
+
+          <form class="coupon-form" id="couponForm">
+            <label class="sr-only" for="couponInput">Coupon code</label>
+            <input id="couponInput" type="text" placeholder="Coupon code" autocomplete="off">
+            <button type="submit">Apply</button>
+          </form>
+          <p class="coupon-hint" id="couponHint">Try <strong>ART10</strong> for 10% off orders above ₹499.</p>
+
+          <a href="/checkout" class="btn btn-accent btn-block btn-lg" id="checkoutBtn">Proceed to checkout <span aria-hidden="true">→</span></a>
+          <div class="secure-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            Secure 256-bit encrypted checkout · COD available
+          </div>
+          <p class="summary-note">
+            <span aria-hidden="true">✦</span>
+            Every order is packed by hand in our Bengaluru studio with a free colour swatch card.
+          </p>
+        </aside>
+      </div>
+
+      <section class="section-tight" id="cartRecommend" hidden>
+        <div class="section-head" style="margin-bottom:26px">
+          <div><span class="eyebrow">One more?</span><h2 style="font-size:clamp(1.7rem,3vw,2.4rem)">Readers also add.</h2></div>
+          <a href="/shop" class="text-link">Browse all books →</a>
+        </div>
+        <div class="product-grid" id="cartRecommendGrid"></div>
+      </section>
+    </div>
+  </section>
+</main>
+{{FOOTER}}

@@ -1,0 +1,165 @@
+{{HEAD}}
+{{HEADER}}
+<main id="main-content" data-product-page>
+  <section class="page-head" style="padding-bottom:28px">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><a href="/shop">Shop</a><span class="sep">/</span><span id="productCrumb" aria-current="page">Colouring book</span>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section section-tight" style="padding-top:12px">
+    <div class="container">
+      <div class="product-layout" id="productLayout">
+        <div class="product-gallery">
+          <div class="main-image" id="mainImage">
+            <img src="/assets/logo-mark.svg" alt="Loading product artwork" width="600" height="800" style="object-fit:contain;padding:15%">
+            <span class="img-tag" id="imageTag">Front cover</span>
+          </div>
+          <div class="thumb-row" id="thumbRow"></div>
+          <p class="gallery-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg>
+            Click any page to view it larger. Real pages from this book.
+          </p>
+        </div>
+
+        <div class="product-detail" id="productDetail">
+          <span class="product-cat" id="productCategory">Loading…</span>
+          <h1 id="productTitle">Loading your next colouring book…</h1>
+          <div class="detail-rating">
+            <span class="stars" id="productStars">★★★★★</span>
+            <span id="productRating">4.8 · 0 reviews</span>
+            <span class="muted">·</span>
+            <a href="#reviewsAnchor" class="text-link" style="border:0;font-size:11px">Verified reviews</a>
+          </div>
+          <div class="detail-price">
+            <strong id="productPrice">₹0</strong>
+            <s id="productMrp">₹0</s>
+            <span class="off-pill" id="productOff">Save 0%</span>
+          </div>
+          <p class="tax-note">Inclusive of all taxes · Free shipping above {{FREE_SHIPPING}}</p>
+          <p class="detail-desc" id="productDesc">Loading the story behind this book…</p>
+
+          <div class="detail-highlights">
+            <div class="highlight"><span class="hi-icon" aria-hidden="true">▤</span><div><span>Pages</span><strong id="productPages">25 pages</strong></div></div>
+            <div class="highlight"><span class="hi-icon" aria-hidden="true">◷</span><div><span>Age group</span><strong id="productAge">8+ years</strong></div></div>
+            <div class="highlight"><span class="hi-icon" aria-hidden="true">✦</span><div><span>Paper</span><strong>100 GSM · A4</strong></div></div>
+            <div class="highlight"><span class="hi-icon" aria-hidden="true">◐</span><div><span>Print</span><strong>Single-sided</strong></div></div>
+          </div>
+
+          <div class="buy-row">
+            <div class="qty-control" aria-label="Quantity">
+              <button type="button" id="qtyMinus" aria-label="Decrease quantity">−</button>
+              <input id="qtyInput" type="number" value="1" min="1" max="10" aria-label="Quantity" readonly>
+              <button type="button" id="qtyPlus" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="btn btn-ink btn-lg" type="button" id="addToCartBtn">Add to cart</button>
+            <button class="btn btn-accent btn-lg" type="button" id="buyNowBtn">Buy now</button>
+          </div>
+          <div class="wishlist-line">
+            <button class="wishlist-link" type="button" id="wishBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+              Save for later
+            </button>
+            <span class="stock-pill" id="stockPill">In stock</span>
+            <span class="muted small" id="skuText"></span>
+          </div>
+
+          <div class="pincode-box">
+            <label for="pincodeInput">Check delivery &amp; COD availability</label>
+            <form class="pincode-form" id="pincodeForm">
+              <input id="pincodeInput" name="pincode" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit pincode">
+              <button type="submit">Check</button>
+            </form>
+            <p class="pincode-result" id="pincodeResult"></p>
+          </div>
+
+          <div class="service-row">
+            <span class="service-item">🚚 Dispatched in 24 hours</span>
+            <span class="service-item">💵 Cash on Delivery</span>
+            <span class="service-item">↩ 7-day returns</span>
+            <span class="service-item">🔒 Secure PayU checkout</span>
+          </div>
+
+          <div class="accordion">
+            <details open>
+              <summary>What makes this book special</summary>
+              <div class="acc-body">
+                <p>Each illustration is drawn by an Art Guru artist and printed single-sided on 100 GSM paper. That means you can use colour pencils, gel pens and most markers without the next page spoiling your work.</p>
+                <p>The book lies flat thanks to a flexible perfect binding, and every copy is checked by hand before it leaves the studio.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Shipping &amp; delivery</summary>
+              <div class="acc-body">
+                <p>Orders are dispatched within 24 working hours from Bengaluru. Metro cities usually receive delivery in 2–4 working days; other pin codes take 4–7 working days. Shipping is free above {{FREE_SHIPPING}}, otherwise a flat {{SHIPPING_FEE}} applies.</p>
+                <p>Cash on Delivery is available on most serviceable pin codes for a small {{COD_FEE}} handling fee.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Returns &amp; care</summary>
+              <div class="acc-body">
+                <p>If the book arrives damaged or is not what you expected, email us within {{RETURNS_DAYS}} days of delivery. We will arrange a replacement or refund as per our <a href="/refund-cancellation" style="color:var(--accent);text-decoration:underline">refund policy</a>.</p>
+                <p>Keep your book flat and dry. A light pencil eraser works wonders on accidental smudges.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Bulk &amp; corporate gifting</summary>
+              <div class="acc-body">
+                <p>Ordering 25 copies or more? We offer custom bookplates, gift notes and bulk pricing. Write to <a href="mailto:{{EMAIL}}" style="color:var(--accent);text-decoration:underline">{{EMAIL}}</a> with your quantity and delivery city.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <section class="inside-section" aria-labelledby="insideHeading">
+        <div class="inside-header">
+          <div>
+            <span class="eyebrow">Look inside</span>
+            <h2 id="insideHeading">All 25 pages from <span id="insideBookTitle">this book</span>.</h2>
+            <p>Every page is a different hand-drawn design. Tap any page to see it full size.</p>
+          </div>
+          <span class="muted small" id="insidePageCount">25 previews</span>
+        </div>
+        <div class="inside-grid" id="insideGrid"></div>
+      </section>
+
+      <section class="section-tight" id="reviewsAnchor">
+        <div class="section-head" style="margin-bottom:26px">
+          <div>
+            <span class="eyebrow">Honest words</span>
+            <h2 style="font-size:clamp(1.8rem,3vw,2.5rem)">From people who colour.</h2>
+          </div>
+          <div class="rating-summary" id="ratingSummary"></div>
+        </div>
+        <div class="testimonial-grid" id="productReviews"></div>
+      </section>
+
+      <section class="section-tight" id="relatedSection">
+        <div class="section-head" style="margin-bottom:26px">
+          <div>
+            <span class="eyebrow">Keep exploring</span>
+            <h2 style="font-size:clamp(1.8rem,3vw,2.5rem)">You may also love.</h2>
+          </div>
+          <a href="/shop" class="text-link">Browse all books →</a>
+        </div>
+        <div class="product-grid" id="relatedGrid"></div>
+      </section>
+    </div>
+  </section>
+
+  <div class="mobile-buybar" id="mobileBuybar" hidden>
+    <div class="mbb-info"><span id="mbbTitle">Colouring book</span><strong id="mbbPrice">₹0</strong></div>
+    <button type="button" class="btn btn-ink btn-sm" id="mbbAdd">Add to cart</button>
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close preview">×</button>
+    <button type="button" class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous page">←</button>
+    <figure class="lightbox-figure"><img id="lightboxImg" src="" alt="Colouring page preview"><figcaption id="lightboxCaption"></figcaption></figure>
+    <button type="button" class="lightbox-nav next" id="lightboxNext" aria-label="Next page">→</button>
+  </div>
+</main>
+{{FOOTER}}

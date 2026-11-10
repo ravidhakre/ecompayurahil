@@ -1,0 +1,113 @@
+{{HEAD}}
+{{HEADER}}
+<main id="main-content">
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><span aria-current="page">Contact</span>
+      </nav>
+      <span class="eyebrow">We would love to hear from you</span>
+      <h1>Say hello to<br>the studio.</h1>
+      <p class="lead">Questions about an order, a bulk gifting enquiry, or just want to tell us which book you loved? A real person reads every message.</p>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <div class="contact-layout">
+        <div class="contact-intro">
+          <span class="eyebrow">Reach us</span>
+          <h2>Four ways to<br>get in touch.</h2>
+          <p>We usually reply within one working day. For order-specific questions, please keep your order number handy.</p>
+
+          <div class="contact-cards">
+            <div class="contact-card">
+              <span class="ci" aria-hidden="true">✉</span>
+              <div><strong>Email</strong><a href="mailto:{{EMAIL}}">{{EMAIL}}</a><p>Best for detailed enquiries, bulk orders and invoices.</p></div>
+            </div>
+            <div class="contact-card">
+              <span class="ci" aria-hidden="true">☎</span>
+              <div><strong>Phone / WhatsApp</strong><a href="tel:{{PHONE}}">{{PHONE}}</a><p>{{SUPPORT_HOURS}}</p></div>
+            </div>
+            <div class="contact-card">
+              <span class="ci" aria-hidden="true">◉</span>
+              <div><strong>Studio address</strong><p>{{ADDRESS}}<br>{{CITY}}, {{STATE}} {{PINCODE}}<br>{{COUNTRY}}</p></div>
+            </div>
+            <div class="contact-card">
+              <span class="ci" aria-hidden="true">◷</span>
+              <div><strong>Support hours</strong><p>{{SUPPORT_HOURS}}<br>Closed on public holidays.</p></div>
+            </div>
+          </div>
+
+          <div class="map-wrap">
+            {{MAP_EMBED}}
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <span class="eyebrow">Send a message</span>
+          <h2>What can we help with?</h2>
+          <p class="card-sub">Fill in the form and we will get back to you by email. Fields marked <span style="color:var(--accent)">*</span> are required.</p>
+
+          <div class="alert alert-success" id="contactSuccess" role="status" hidden></div>
+          <div class="alert alert-error" id="contactError" role="alert" hidden></div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="ctName">Your name <span class="req">*</span></label>
+                <input id="ctName" name="name" type="text" autocomplete="name" placeholder="Ananya Sharma" required>
+              </div>
+              <div class="field">
+                <label for="ctEmail">Email address <span class="req">*</span></label>
+                <input id="ctEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              </div>
+              <div class="field">
+                <label for="ctPhone">Phone <span class="muted small">(optional)</span></label>
+                <input id="ctPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="+91 …">
+              </div>
+              <div class="field">
+                <label for="ctSubject">Subject</label>
+                <select id="ctSubject" name="subject">
+                  <option>General enquiry</option>
+                  <option>Order status</option>
+                  <option>Return or refund</option>
+                  <option>Bulk &amp; corporate gifting</option>
+                  <option>Wholesale / stockist</option>
+                  <option>Collaboration / press</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="ctMessage">Your message <span class="req">*</span></label>
+                <textarea id="ctMessage" name="message" rows="6" placeholder="Tell us a little about what you need…" required></textarea>
+                <p class="hint">For order help, include your order number (e.g. AG2600012345).</p>
+              </div>
+            </div>
+            <button class="btn btn-accent btn-lg btn-block" type="submit" id="contactBtn">Send message <span aria-hidden="true">→</span></button>
+            <p class="muted small" style="margin-top:12px;text-align:center">By sending this form you agree to our <a href="/privacy-policy" style="text-decoration:underline">privacy policy</a>. We never sell your details.</p>
+          </form>
+
+          <div style="border-top:1px solid var(--line);margin-top:26px;padding-top:20px">
+            <strong style="font-size:12px">Prefer WhatsApp?</strong>
+            <p class="muted small" style="margin:4px 0 12px">Message us for a quick reply during studio hours.</p>
+            <a class="btn btn-outline btn-sm" href="https://wa.me/{{WHATSAPP}}?text=Hi%20Art%20Guru%2C%20I%20have%20a%20question" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-help-card" style="margin-top:44px">
+        <div>
+          <span class="eyebrow">Bulk &amp; corporate gifting</span>
+          <h3>25 copies or more? We will make it special.</h3>
+          <p class="muted small">Custom bookplates, gift notes, branded packaging and volume pricing. Tell us your quantity, city and timeline.</p>
+        </div>
+        <div class="shop-help-actions">
+          <a class="btn btn-ink btn-sm" href="mailto:{{EMAIL}}?subject=Bulk%20order%20enquiry">Email bulk orders</a>
+          <a class="btn btn-outline btn-sm" href="/faq">Read the FAQs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{{FOOTER}}

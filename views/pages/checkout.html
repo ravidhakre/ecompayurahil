@@ -1,0 +1,148 @@
+{{HEAD}}
+{{HEADER}}
+<main id="main-content">
+  <section class="page-head" style="padding-bottom:24px">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><a href="/cart">Cart</a><span class="sep">/</span><span aria-current="page">Checkout</span>
+      </nav>
+      <div class="checkout-steps" aria-label="Checkout progress">
+        <span class="step-dot done"><i>1</i> Cart</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span class="step-dot active"><i>2</i> Delivery &amp; payment</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span class="step-dot"><i>3</i> Confirmation</span>
+      </div>
+      <span class="eyebrow" style="margin-top:18px">Secure checkout</span>
+      <h1>Almost at<br>your easel.</h1>
+      <p class="lead">Tell us where to send your books. Pay online through PayU or choose Cash on Delivery — both are safe and simple.</p>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <div id="checkoutEmpty" hidden>
+        <div class="empty-state" style="max-width:620px;margin:20px auto 60px">
+          <div style="font-size:48px;margin-bottom:12px">🛒</div>
+          <h2>Your cart is empty</h2>
+          <p>Add a colouring book before heading to checkout. We promise it is worth the quiet hour.</p>
+          <a class="btn btn-ink btn-lg" href="/shop">Explore the library</a>
+        </div>
+      </div>
+
+      <form class="checkout-layout" id="checkoutForm" novalidate>
+        <div>
+          <div class="checkout-card">
+            <h2>Delivery details</h2>
+            <p class="card-sub">All fields marked <span style="color:var(--accent)">*</span> are required. We will send order updates to your email and phone.</p>
+            <div id="checkoutAlert" class="alert alert-error" role="alert" hidden></div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="coName">Full name <span class="req">*</span></label>
+                <input id="coName" name="name" type="text" autocomplete="name" placeholder="e.g. Ananya Sharma" required>
+              </div>
+              <div class="field">
+                <label for="coPhone">Phone number <span class="req">*</span></label>
+                <input id="coPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="13" placeholder="10-digit mobile number" required>
+              </div>
+              <div class="field full">
+                <label for="coEmail">Email address <span class="req">*</span></label>
+                <input id="coEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+                <p class="hint">Your receipt and delivery updates will be sent here.</p>
+              </div>
+              <div class="field full">
+                <label for="coAddress">Full address <span class="req">*</span></label>
+                <textarea id="coAddress" name="address" autocomplete="street-address" rows="3" placeholder="Flat / house no., building, street, area, landmark" required></textarea>
+              </div>
+              <div class="field">
+                <label for="coCity">City <span class="req">*</span></label>
+                <input id="coCity" name="city" type="text" autocomplete="address-level2" placeholder="Bengaluru" required>
+              </div>
+              <div class="field">
+                <label for="coState">State <span class="req">*</span></label>
+                <input id="coState" name="state" type="text" autocomplete="address-level1" list="stateList" placeholder="Karnataka" required>
+                <datalist id="stateList">
+                  <option value="Andhra Pradesh"><option value="Arunachal Pradesh"><option value="Assam"><option value="Bihar">
+                  <option value="Chhattisgarh"><option value="Delhi"><option value="Goa"><option value="Gujarat">
+                  <option value="Haryana"><option value="Himachal Pradesh"><option value="Jammu & Kashmir">
+                  <option value="Jharkhand"><option value="Karnataka"><option value="Kerala"><option value="Madhya Pradesh">
+                  <option value="Maharashtra"><option value="Manipur"><option value="Meghalaya"><option value="Mizoram">
+                  <option value="Nagaland"><option value="Odisha"><option value="Puducherry"><option value="Punjab">
+                  <option value="Rajasthan"><option value="Sikkim"><option value="Tamil Nadu"><option value="Telangana">
+                  <option value="Tripura"><option value="Uttar Pradesh"><option value="Uttarakhand"><option value="West Bengal">
+                </datalist>
+              </div>
+              <div class="field">
+                <label for="coPincode">PIN code <span class="req">*</span></label>
+                <input id="coPincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="6" placeholder="560038" required>
+              </div>
+              <div class="field">
+                <label for="coNotes">Order notes <span class="muted small">(optional)</span></label>
+                <input id="coNotes" name="notes" type="text" maxlength="500" placeholder="Gift message, delivery preference…">
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-card" style="margin-top:18px">
+            <h2>Payment method</h2>
+            <p class="card-sub">Choose how you would like to pay. All online payments are processed securely by PayU.</p>
+            <div class="payment-options">
+              <label class="payment-option selected" data-payment-option="payu">
+                <input type="radio" name="payment_method" value="payu" checked>
+                <div style="flex:1">
+                  <span class="po-title">Pay online <span class="tag">Recommended</span></span>
+                  <span class="po-desc">UPI, credit card, debit card, net banking and wallets through PayU's encrypted gateway.</span>
+                </div>
+                <div class="payment-logos"><span>UPI</span><span>VISA</span><span>MC</span><span>RuPay</span></div>
+              </label>
+              <label class="payment-option" data-payment-option="cod">
+                <input type="radio" name="payment_method" value="cod">
+                <div style="flex:1">
+                  <span class="po-title">Cash on Delivery</span>
+                  <span class="po-desc">Pay the courier when your books arrive. A small COD handling fee of {{COD_FEE}} applies.</span>
+                </div>
+                <div class="payment-logos"><span>COD</span></div>
+              </label>
+            </div>
+            <div class="check-row" style="margin-top:18px">
+              <input id="coTerms" type="checkbox" required>
+              <label for="coTerms">I agree to the <a href="/terms-and-conditions" target="_blank" style="color:var(--accent);text-decoration:underline">Terms &amp; Conditions</a>, <a href="/refund-cancellation" target="_blank" style="color:var(--accent);text-decoration:underline">Refund Policy</a> and <a href="/privacy-policy" target="_blank" style="color:var(--accent);text-decoration:underline">Privacy Policy</a>.</label>
+            </div>
+          </div>
+        </div>
+
+        <aside class="summary-card checkout-summary" aria-label="Order summary">
+          <h2>Your order</h2>
+          <div class="cart-mini" id="checkoutMini"></div>
+
+          <div class="coupon-form" id="checkoutCouponForm">
+            <label class="sr-only" for="checkoutCoupon">Coupon code</label>
+            <input id="checkoutCoupon" type="text" placeholder="Coupon code" autocomplete="off">
+            <button type="button" id="checkoutCouponBtn">Apply</button>
+          </div>
+          <p class="coupon-hint" id="checkoutCouponHint">Have a code? Try <strong>ART10</strong> above ₹499.</p>
+
+          <div id="checkoutSummaryRows">
+            <div class="summary-row"><span>Subtotal</span><span>—</span></div>
+            <div class="summary-row"><span>Shipping</span><span>—</span></div>
+            <div class="summary-divider"></div>
+            <div class="summary-total"><span>Total</span><strong>—</strong></div>
+          </div>
+
+          <button class="btn btn-accent btn-block btn-lg place-order-btn" type="submit" id="placeOrderBtn">Place order <span aria-hidden="true">→</span></button>
+          <div class="secure-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            256-bit encrypted · PayU secured · COD available
+          </div>
+          <div class="checkout-trust">
+            <span>🚚 24-hour dispatch</span>
+            <span>↩ {{RETURNS_DAYS}}-day returns</span>
+            <span>🎁 Gift-ready packing</span>
+          </div>
+          <p class="summary-note"><span aria-hidden="true">✦</span> Every order is hand-packed in our Bengaluru studio with a free colour swatch card.</p>
+        </aside>
+      </form>
+    </div>
+  </section>
+</main>
+{{FOOTER}}

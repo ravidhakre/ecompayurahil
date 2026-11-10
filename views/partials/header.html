@@ -1,0 +1,108 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="announcement-bar">
+  <div class="announcement-track"><span>{{ANNOUNCEMENT}}</span></div>
+</div>
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="/" class="brand" aria-label="Art Guru home">
+      <img src="/assets/logo.svg" alt="Art Guru — Colour. Create. Calm." width="180" height="48">
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="/" data-nav="home">Home</a>
+      <div class="nav-dropdown">
+        <a href="/shop" data-nav="shop">Shop <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="dropdown-panel">
+          <div class="dropdown-grid">
+            <a href="/shop?category=mandala-magic"><span class="dd-dot" style="--dot:#C8553D"></span>Mandala Magic</a>
+            <a href="/shop?category=animal-kingdom"><span class="dd-dot" style="--dot:#7C8A6E"></span>Animal Kingdom</a>
+            <a href="/shop?category=little-artists"><span class="dd-dot" style="--dot:#E3A94F"></span>Little Artists</a>
+            <a href="/shop?category=floral-dreams"><span class="dd-dot" style="--dot:#D97742"></span>Floral Dreams</a>
+            <a href="/shop?category=fantasy-worlds"><span class="dd-dot" style="--dot:#8B6FA8"></span>Fantasy Worlds</a>
+            <a href="/shop?category=stress-relief"><span class="dd-dot" style="--dot:#5C7C8A"></span>Stress Relief</a>
+            <a href="/shop?category=travel-diaries"><span class="dd-dot" style="--dot:#4D7C6A"></span>Travel Diaries</a>
+            <a href="/shop?category=festive-colours"><span class="dd-dot" style="--dot:#B8860B"></span>Festive Colours</a>
+          </div>
+          <div class="dropdown-feature">
+            <p class="eyebrow">Gift-ready</p>
+            <strong>Colour books for every mood</strong>
+            <a href="/shop" class="text-link">Explore all 64 books →</a>
+          </div>
+        </div>
+      </div>
+      <a href="/shop?sort=newest" data-nav="new">New Arrivals</a>
+      <a href="/about" data-nav="about">Our Story</a>
+      <a href="/contact" data-nav="contact">Contact</a>
+      <a href="/track-order" data-nav="track">Track Order</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn search-toggle" id="searchToggle" type="button" aria-label="Search" aria-expanded="false">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <a href="/cart" class="icon-btn cart-btn" aria-label="Shopping cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </a>
+      <a href="/shop" class="btn btn-ink btn-sm header-shop-btn">Shop Books</a>
+    </div>
+  </div>
+  <div class="search-panel" id="searchPanel" hidden>
+    <form class="container search-form" action="/shop" method="get" role="search">
+      <label class="sr-only" for="headerSearch">Search colouring books</label>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="headerSearch" type="search" name="q" placeholder="Search mandalas, unicorns, travel, gifts…" autocomplete="off">
+      <button type="submit" class="btn btn-ink btn-sm">Search</button>
+      <button type="button" class="icon-btn search-close" id="searchClose" aria-label="Close search">×</button>
+    </form>
+    <div class="container search-suggestions">
+      <span>Popular:</span>
+      <a href="/shop?q=mandala">Mandala</a>
+      <a href="/shop?q=unicorn">Unicorn</a>
+      <a href="/shop?q=floral">Floral</a>
+      <a href="/shop?q=travel">Travel</a>
+      <a href="/shop?q=festive">Festive</a>
+    </div>
+  </div>
+</header>
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile menu" aria-hidden="true">
+  <div class="drawer-head">
+    <a href="/" class="brand"><img src="/assets/logo.svg" alt="Art Guru" width="160" height="43"></a>
+    <button class="icon-btn" id="drawerClose" type="button" aria-label="Close menu">×</button>
+  </div>
+  <form class="drawer-search" action="/shop" method="get" role="search">
+    <label class="sr-only" for="drawerSearch">Search</label>
+    <input id="drawerSearch" type="search" name="q" placeholder="Search colouring books…">
+    <button type="submit" aria-label="Search">→</button>
+  </form>
+  <nav class="drawer-nav">
+    <a href="/">Home</a>
+    <a href="/shop">Shop All Books</a>
+    <details>
+      <summary>Collections <span>+</span></summary>
+      <div class="drawer-sub">
+        <a href="/shop?category=mandala-magic">Mandala Magic</a>
+        <a href="/shop?category=animal-kingdom">Animal Kingdom</a>
+        <a href="/shop?category=little-artists">Little Artists</a>
+        <a href="/shop?category=floral-dreams">Floral Dreams</a>
+        <a href="/shop?category=fantasy-worlds">Fantasy Worlds</a>
+        <a href="/shop?category=stress-relief">Stress Relief</a>
+        <a href="/shop?category=travel-diaries">Travel Diaries</a>
+        <a href="/shop?category=festive-colours">Festive Colours</a>
+      </div>
+    </details>
+    <a href="/shop?sort=newest">New Arrivals</a>
+    <a href="/about">Our Story</a>
+    <a href="/contact">Contact</a>
+    <a href="/track-order">Track Order</a>
+    <a href="/faq">FAQs</a>
+  </nav>
+  <div class="drawer-foot">
+    <a href="/cart" class="btn btn-ink btn-block">View Cart <span data-cart-count>0</span></a>
+    <p>Need help? <a href="tel:{{PHONE}}">{{PHONE}}</a></p>
+  </div>
+</aside>
+<div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
+<script>window.AG_SETTINGS = {{SETTINGS_JSON}};</script>
