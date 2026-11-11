@@ -162,7 +162,9 @@
 /* ---------- product detail ---------- */
 
 .product-layout { display: grid; grid-template-columns: 1.02fr .98fr; gap: 60px; align-items: start; }
-.product-gallery { position: sticky; top: calc(var(--header-height) + 22px); }
+.product-layout > * { min-width: 0; }
+.product-gallery { position: sticky; top: calc(var(--header-height) + 22px); align-self: start; }
+.product-detail { position: relative; z-index: 1; }
 .main-image {
   border-radius: var(--radius); overflow: hidden; background: var(--paper-2);
   aspect-ratio: 3 / 4; border: 1px solid var(--line); position: relative;
