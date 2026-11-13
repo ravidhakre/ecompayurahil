@@ -2,7 +2,7 @@
   "name": "art-guru",
   "version": "1.0.0",
   "private": true,
-  "description": "Art Guru - Premium Colouring Books Store (Ecommerce + Admin Panel)",
+  "description": "Arts Book - Premium Colouring Books Store (Ecommerce + Admin Panel)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

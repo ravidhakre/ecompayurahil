@@ -61,30 +61,30 @@ const MIME = {
 
 const PAGE_META = {
   index: {
-    title: 'Art Guru — Premium Colouring Books for Every Artist',
+    title: 'Arts Book — Premium Colouring Books for Every Artist',
     description: 'Shop beautifully illustrated colouring books for adults and kids. Mandalas, animals, florals, travel and festive designs. Free shipping above ₹499, COD available.',
   },
   shop: {
-    title: 'Shop All Colouring Books — Art Guru',
+    title: 'Shop All Colouring Books — Arts Book',
     description: 'Browse 50+ premium colouring books. Filter by category, price, rating and availability. Find your next creative escape.',
   },
   product: {
-    title: 'Colouring Book — Art Guru',
+    title: 'Colouring Book — Arts Book',
     description: 'Premium colouring book with thick, bleed-resistant pages. See inside pages and order online with COD or secure payment.',
   },
-  cart: { title: 'Your Cart — Art Guru', description: 'Review your Art Guru colouring books and proceed to checkout.' },
-  checkout: { title: 'Secure Checkout — Art Guru', description: 'Complete your order with Cash on Delivery or secure online payment.' },
-  payment: { title: 'Payment — Art Guru', description: 'Complete your Art Guru order securely.' },
-  receipt: { title: 'Order Receipt — Art Guru', description: 'Your Art Guru order receipt and invoice.' },
-  track: { title: 'Track Your Order — Art Guru', description: 'Track your Art Guru order with your order number and registered phone number.' },
-  about: { title: 'Our Story — Art Guru', description: 'Art Guru is an Indian studio making beautiful colouring books for calm, creativity and connection.' },
-  contact: { title: 'Contact Art Guru', description: 'Get in touch with Art Guru for orders, bulk gifting, collaborations and support.' },
-  faq: { title: 'Frequently Asked Questions — Art Guru', description: 'Answers about shipping, payments, returns, paper quality and bulk orders.' },
-  terms: { title: 'Terms & Conditions — Art Guru', description: 'Terms and conditions for shopping with Art Guru.' },
-  privacy: { title: 'Privacy Policy — Art Guru', description: 'How Art Guru collects, uses and protects your personal information.' },
-  shipping: { title: 'Shipping Policy — Art Guru', description: 'Art Guru shipping timelines, charges and delivery information.' },
-  refund: { title: 'Refund & Cancellation — Art Guru', description: 'Art Guru returns, refunds and cancellation policy.' },
-  notfound: { title: 'Page Not Found — Art Guru', description: 'The page you were looking for could not be found.' },
+  cart: { title: 'Your Cart — Arts Book', description: 'Review your Arts Book colouring books and proceed to checkout.' },
+  checkout: { title: 'Secure Checkout — Arts Book', description: 'Complete your order with Cash on Delivery or secure online payment.' },
+  payment: { title: 'Payment — Arts Book', description: 'Complete your Arts Book order securely.' },
+  receipt: { title: 'Order Receipt — Arts Book', description: 'Your Arts Book order receipt and invoice.' },
+  track: { title: 'Track Your Order — Arts Book', description: 'Track your Arts Book order with your order number and registered phone number.' },
+  about: { title: 'Our Story — Arts Book', description: 'Arts Book is an Indian studio making beautiful colouring books for calm, creativity and connection.' },
+  contact: { title: 'Contact Arts Book', description: 'Get in touch with Arts Book for orders, bulk gifting, collaborations and support.' },
+  faq: { title: 'Frequently Asked Questions — Arts Book', description: 'Answers about shipping, payments, returns, paper quality and bulk orders.' },
+  terms: { title: 'Terms & Conditions — Arts Book', description: 'Terms and conditions for shopping with Arts Book.' },
+  privacy: { title: 'Privacy Policy — Arts Book', description: 'How Arts Book collects, uses and protects your personal information.' },
+  shipping: { title: 'Shipping Policy — Arts Book', description: 'Arts Book shipping timelines, charges and delivery information.' },
+  refund: { title: 'Refund & Cancellation — Arts Book', description: 'Arts Book returns, refunds and cancellation policy.' },
+  notfound: { title: 'Page Not Found — Arts Book', description: 'The page you were looking for could not be found.' },
 };
 
 const NAV_COUNT = 0;
@@ -97,7 +97,7 @@ function applyTokens(html, extra = {}) {
   const s = getSettings();
   const publicSettings = getPublicSettings();
   const mapEmbed = s.map_embed
-    ? `<iframe class="map-frame" src="${escapeHtml(s.map_embed)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Art Guru studio location"></iframe>`
+    ? `<iframe class="map-frame" src="${escapeHtml(s.map_embed)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Arts Book studio location"></iframe>`
     : `<div class="map-placeholder"><div class="map-pin">◉</div><strong>Studio map coming soon</strong><span>Our exact location will be shared here shortly. Call or email us for directions.</span></div>`;
 
   const tokens = {
@@ -524,7 +524,7 @@ async function handleApi(req, res, url) {
     const email = String(body.email || '').trim().toLowerCase();
     if (!isEmail(email)) return sendJson(res, 400, { ok: false, error: 'Please enter a valid email address.' });
     db.prepare('INSERT OR IGNORE INTO subscribers (email, created_at) VALUES (?, ?)').run(email, new Date().toISOString());
-    return sendJson(res, 200, { ok: true, message: 'You are on the list. Welcome to Art Guru!' });
+    return sendJson(res, 200, { ok: true, message: 'You are on the list. Welcome to Arts Book!' });
   }
 
   if (p === '/api/contact' && method === 'POST') {
@@ -895,7 +895,7 @@ async function handleAdminApi(req, res, url) {
   if (p === '/api/admin/reports.csv' && method === 'GET') {
     const report = buildReport(url.searchParams);
     const rows = [
-      csvRow(['Art Guru Sales Report', `${report.from} to ${report.to}`]),
+      csvRow(['Arts Book Sales Report', `${report.from} to ${report.to}`]),
       csvRow([]),
       csvRow(['Summary']),
       csvRow(['Orders', report.totals.orders]),
@@ -1284,7 +1284,7 @@ async function handleRequest(req, res) {
 
   if (pathname === '/manifest.webmanifest') {
     return sendJson(res, 200, {
-      name: 'Art Guru', short_name: 'Art Guru', start_url: '/', display: 'standalone',
+      name: 'Arts Book', short_name: 'Arts Book', start_url: '/', display: 'standalone',
       background_color: '#fbf6ee', theme_color: '#1f3d33',
       icons: [{ src: '/assets/logo-mark.svg', sizes: 'any', type: 'image/svg+xml' }],
     });
@@ -1373,7 +1373,7 @@ async function handleRequest(req, res) {
         res,
         200,
         renderPage('admin', {
-          title: 'Admin — Art Guru',
+          title: 'Admin — Arts Book',
           bodyClass: 'admin-body',
           extraHead: '<link rel="stylesheet" href="/assets/css/admin.css">\n  <meta name="robots" content="noindex, nofollow">',
         })
@@ -1390,7 +1390,7 @@ async function handleRequest(req, res) {
         res,
         200,
         renderPage('product', {
-          title: `${product.title} — Art Guru`,
+          title: `${product.title} — Arts Book`,
           description: `${product.title}. ${product.description.slice(0, 150)}`,
         })
       );
@@ -1400,7 +1400,7 @@ async function handleRequest(req, res) {
     if (m) {
       const order = getOrderByNo(m[1]);
       if (!order) return sendHtml(res, 404, renderPage('notfound'));
-      return sendHtml(res, 200, renderPage('receipt', { title: `Order ${order.order_no} — Art Guru` }));
+      return sendHtml(res, 200, renderPage('receipt', { title: `Order ${order.order_no} — Arts Book` }));
     }
 
     if (pathname === '/login' || pathname === '/signin') return redirect(res, '/admin');
@@ -1431,7 +1431,7 @@ if (require.main === module) {
   server.listen(PORT, HOST, () => {
     const settings = getSettings();
     console.log('');
-    console.log('  Art Guru is running');
+    console.log('  Arts Book is running');
     console.log(`  Store:  http://localhost:${PORT}`);
     console.log(`  Admin:  http://localhost:${PORT}/admin`);
     console.log(`  Admin password: ${process.env.ADMIN_PASSWORD ? '(set via ADMIN_PASSWORD)' : 'ArtGuru@2026 (default — change it!)'}`);

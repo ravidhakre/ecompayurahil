@@ -13,7 +13,7 @@
   const REVIEWS = [
     {
       name: 'Ananya S.',
-      city: 'Bengaluru',
+      city: 'Agra',
       initials: 'AS',
       text: 'The paper quality genuinely surprised me. Fine-liners, gel pens, even a light watercolour wash — no ghosting on the next page. The illustrations are gorgeous.',
     },
@@ -27,7 +27,7 @@
       name: 'Meera P.',
       city: 'Mumbai',
       initials: 'MP',
-      text: 'My evening ritual now: chai, a podcast and one page. The designs hit that sweet spot between relaxing and interesting. Already eyeing my next Art Guru book.',
+      text: 'My evening ritual now: chai, a podcast and one page. The designs hit that sweet spot between relaxing and interesting. Already eyeing my next Arts Book book.',
     },
   ];
 
@@ -123,7 +123,7 @@
   }
 
   function renderProduct() {
-    document.title = `${product.title} — Art Guru`;
+    document.title = `${product.title} — Arts Book`;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute('content', `${product.title}. ${String(product.description || '').slice(0, 150)}`);
 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Art Guru — admin studio script
+   Arts Book — admin studio script
    ========================================================================== */
 (function () {
   'use strict';
@@ -263,7 +263,7 @@
     const title = $('#topbarTitle');
     if (eyebrow) eyebrow.textContent = meta.eyebrow;
     if (title) title.textContent = meta.title;
-    document.title = `${meta.title} — Art Guru Admin`;
+    document.title = `${meta.title} — Arts Book Admin`;
     closeSidebar();
   }
 

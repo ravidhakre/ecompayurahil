@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Art Guru — shared storefront script
+   Arts Book — shared storefront script
    ========================================================================== */
 (function () {
   'use strict';

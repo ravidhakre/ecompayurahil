@@ -1,6 +1,6 @@
-# Art Guru — Premium Colouring Books Store
+# Arts Book — Premium Colouring Books Store
 
-A complete, production-ready ecommerce website for **Art Guru**, a premium drawing and
+A complete, production-ready ecommerce website for **Arts Book**, a premium drawing and
 colouring-book studio. It includes a full storefront, a password-protected admin panel,
 Cash on Delivery, PayU online payments, order tracking, invoices and a reporting dashboard.
 
@@ -388,4 +388,4 @@ Then verify:
 
 ## License
 
-Proprietary — built for Art Guru. All artwork and branding are original to this project.
+Proprietary — built for Arts Book. All artwork and branding are original to this project.

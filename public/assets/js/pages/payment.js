@@ -184,7 +184,7 @@
       .join('');
     body.innerHTML = `
       <div class="alert alert-info">
-        You are being redirected to <strong>PayU</strong> to complete this payment securely. Your card and UPI details are never stored by Art Guru.
+        You are being redirected to <strong>PayU</strong> to complete this payment securely. Your card and UPI details are never stored by Arts Book.
       </div>
       ${renderMeta({ amount: data.fields.amount, orderNo, name: data.fields.firstname, email: data.fields.email, phone: data.fields.phone })}
       <div class="pay-method-list" aria-hidden="true">

@@ -1,5 +1,5 @@
 // Vercel serverless entrypoint.
-// The entire Art Guru app (storefront + API + admin) is served by the single
+// The entire Arts Book app (storefront + API + admin) is served by the single
 // handler exported from server.js. Vercel routes every request here.
 const { handleRequest } = require('../server.js');
 

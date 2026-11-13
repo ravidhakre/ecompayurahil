@@ -69,7 +69,7 @@
   }
 
   function render(order) {
-    document.title = `Order ${order.order_no} — Art Guru`;
+    document.title = `Order ${order.order_no} — Arts Book`;
     gate.hidden = true;
     errorBox.hidden = true;
     content.hidden = false;
