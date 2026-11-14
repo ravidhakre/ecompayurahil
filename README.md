@@ -81,10 +81,10 @@ Uses Node's `--watch` flag to restart on file changes.
 ## Admin panel
 
 - URL: `/admin`
-- Default password: **`ArtGuru@2026`**
+- Password: set via the `ADMIN_PASSWORD` environment variable (change it before going live)
 - Default email: `admin@artguru.in`
 
-> **Change the password before going live.** Set the `ADMIN_PASSWORD` environment variable.
+> **Important:** Set a strong `ADMIN_PASSWORD` before going live. Do not share or display admin credentials publicly.
 
 The admin session lasts 12 hours and is stored in an HMAC-signed, HTTP-only cookie.
 After 5 failed logins from the same IP, login is rate-limited for 15 minutes.
@@ -116,7 +116,7 @@ Create the variables in your shell before starting, or use your host's dashboard
 | `PORT` | `3000` | HTTP port |
 | `HOST` | `0.0.0.0` | Bind address |
 | `NODE_ENV` | — | Set to `production` to mark cookies `Secure` (use with HTTPS) |
-| `ADMIN_PASSWORD` | `ArtGuru@2026` | Admin panel password — **change this** |
+| `ADMIN_PASSWORD` | `(set in environment)` | Admin panel password — **change this** |
 | `ADMIN_EMAIL` | `admin@artguru.in` | Admin email shown in the panel |
 | `ARTGURU_SECRET` | dev fallback | Secret used to sign admin sessions — **set a long random value** |
 | `SESSION_SECRET` | — | Alternative name for the same secret |
@@ -318,7 +318,7 @@ server {
    ```bash
    fly launch --no-deploy
    fly volumes create artguru_data --size 3 -r bom
-   fly secrets set ADMIN_PASSWORD='ArtGuru@2026' ARTGURU_SECRET='...' APP_URL='https://artguru.fly.dev'
+   fly secrets set ADMIN_PASSWORD='(set in environment)' ARTGURU_SECRET='...' APP_URL='https://artguru.fly.dev'
    fly deploy
    ```
 3. The SQLite file lives on the mounted volume at `/app/data`, so data persists across deploys.

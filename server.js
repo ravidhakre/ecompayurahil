@@ -1436,7 +1436,7 @@ if (require.main === module) {
     console.log('  Arts Book is running');
     console.log(`  Store:  http://localhost:${PORT}`);
     console.log(`  Admin:  http://localhost:${PORT}/admin`);
-    console.log(`  Admin password: ${process.env.ADMIN_PASSWORD ? '(set via ADMIN_PASSWORD)' : 'ArtGuru@2026 (default — change it!)'}`);
+    console.log(`  Admin password: ${process.env.ADMIN_PASSWORD ? '(set via ADMIN_PASSWORD)' : '(using default — set ADMIN_PASSWORD before going live)'}`);
     console.log(`  PayU:   ${payu.isConfigured() ? `${payu.PAYU_MODE} mode` : 'demo mode (PAYU_KEY / PAYU_SALT not set)'}`);
     console.log(`  Database: ${process.env.FIRESTORE_PROJECT_ID || process.env.FIREBASE_PROJECT_ID ? 'Firebase Firestore' : path.join('data', 'artguru.db')}`);
     console.log('');
