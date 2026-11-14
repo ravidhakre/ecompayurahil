@@ -83,7 +83,7 @@ const PAGE_META = {
   terms: { title: 'Terms & Conditions — Arts Book', description: 'Terms and conditions for shopping with Arts Book.' },
   privacy: { title: 'Privacy Policy — Arts Book', description: 'How Arts Book collects, uses and protects your personal information.' },
   shipping: { title: 'Shipping Policy — Arts Book', description: 'Arts Book shipping timelines, charges and delivery information.' },
-  refund: { title: 'Refund & Cancellation — Arts Book', description: 'Arts Book returns, refunds and cancellation policy.' },
+  refund: { title: 'Return, Refund & Cancellation Policy — Arts Book', description: 'Arts Book cancellation policy (24 hours) and return & refund policy (7 days) with refund mode and timeline.' },
   notfound: { title: 'Page Not Found — Arts Book', description: 'The page you were looking for could not be found.' },
 };
 
@@ -102,6 +102,8 @@ function applyTokens(html, extra = {}) {
 
   const tokens = {
     STORE_NAME: s.store_name,
+    TRADE_NAME: s.trade_name || s.store_name,
+    LEGAL_NAME: s.legal_name || '',
     TAGLINE: s.tagline,
     ANNOUNCEMENT: s.announcement,
     PHONE: s.phone,
